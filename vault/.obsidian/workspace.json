@@ -1,0 +1,212 @@
+{
+  "main": {
+    "id": "366ad85dc39a2531",
+    "type": "split",
+    "children": [
+      {
+        "id": "c216aea18eab6dcb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b8bb392621505d99",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Resumo - Data5-Agent - Planejamento Ecossistema Base44 e GitHub.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Resumo - Data5-Agent - Planejamento Ecossistema Base44 e GitHub"
+            }
+          },
+          {
+            "id": "43e82a41b948f0a8",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "Sem título 1.base",
+                "viewName": "Tabela"
+              },
+              "icon": "lucide-table",
+              "title": "Sem título 1"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bce392485540449e",
+    "type": "split",
+    "children": [
+      {
+        "id": "6c0fcc5fef85552e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c12a36d27aa7ffae",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "65acfc0ad6dc4c3f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "707043e84f39be5d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b0a9b701788203ef",
+    "type": "split",
+    "children": [
+      {
+        "id": "65f6b59712d2cfc2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ceafd2de5311b7ea",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Resumo - Data5-Agent - Planejamento Ecossistema Base44 e GitHub.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos para Resumo - Data5-Agent - Planejamento Ecossistema Base44 e GitHub"
+            }
+          },
+          {
+            "id": "cccfddba86c84398",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Resumo - Data5-Agent - Planejamento Ecossistema Base44 e GitHub.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída para Resumo - Data5-Agent - Planejamento Ecossistema Base44 e GitHub"
+            }
+          },
+          {
+            "id": "0ef0a8b2be5dbd6b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "dc41dfe773b344fc",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "c74639ce41afb123",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Resumo - Data5-Agent - Planejamento Ecossistema Base44 e GitHub.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário de Resumo - Data5-Agent - Planejamento Ecossistema Base44 e GitHub"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "43e82a41b948f0a8",
+  "lastOpenFiles": [
+    "Sem título.base",
+    "Sem título 1.base",
+    "2026-06-27.md",
+    "Antigravidade.md",
+    "Resumo - Data5-Agent - Planejamento Ecossistema Base44 e GitHub.md",
+    "desktop.ini",
+    "Data5-Memory.md",
+    "dyad.md",
+    "Skill/dataform-bigquery.md"
+  ]
+}
