@@ -46,6 +46,8 @@ Este documento centraliza as variáveis importantes, credenciais, conexões de b
     *   **Agente IBGR (Saldos)**: ID `69ce6d99e316a867c948f87c` | API Key `01df29c799f74d51aaf16ce02fc73cc9`
     *   **Agente AGY 01**: ID `6a47553b7df311e0c8fc2b82` | API Key `e68fa784a0424824b43b844844c6ca7b`
     *   **Agente Portugal-01**: ID `6a4765821ba865e12348dca4` | API Key `1ff9ebde0831438492c9e2aaa9546d04`
+    *   **Agente Sampaio360 (Superagent)**: ID `6a5122652bc707975644f0fd` | Chat URL `https://app.base44.com/superagent/6a5122652bc707975644f0fd`
+    *   **Gmail Brasil Map (App)**: ID `692868ceb611b5d91d8d37a0` | URL `https://gmail-brasil-map.base44.app` | Acesso via secrets `BASE44_APP_ID` + `BASE44_API_KEY`
 
 ---
 
@@ -90,4 +92,16 @@ Este documento centraliza as variáveis importantes, credenciais, conexões de b
     *   **Senha**: `Dev@2564`
 
 ---
-*Nota unificada pelo Antigravity em 13/07/2026.*
+
+## 🐙 10. GitHub (sampaio360)
+*   **Propósito**: Acesso programático aos repositórios do ecossistema Data5 via API.
+*   **Usuário**: `sampaio360`
+*   **Token (PAT)**: Configurado como secret `GITHUB_TOKEN` no Agente Sampaio360
+*   **Repositórios**:
+    *   [Data5-memory](https://github.com/sampaio360/Data5-memory) — cérebro do ecossistema
+    *   [Supabase-Painel](https://github.com/sampaio360/Supabase-Painel) — painel de BD
+    *   [Transf_Lov-Lov](https://github.com/sampaio360/Transf_Lov-Lov) — projeto de transferência
+*   **Permissões do token**: `repo` (leitura e escrita)
+
+---
+*Nota unificada pelo Antigravity em 13/07/2026. Atualizada pelo Agente Sampaio360 em 21/07/2026.*
