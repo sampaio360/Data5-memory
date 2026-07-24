@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import { supabase } from '../supabaseClient';
 
 export interface VaultNode {
   id: string;
@@ -45,6 +46,23 @@ const initialNodes: VaultNode[] = [
 
 const API_BASE = 'http://localhost:3001/api';
 
+const getAuthHeaders = async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+  const token = session?.access_token || '';
+  return {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  };
+};
+
+const getAuthHeaderOnly = async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+  const token = session?.access_token || '';
+  return {
+    'Authorization': `Bearer ${token}`
+  };
+};
+
 export const VaultProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [nodes, setNodes] = useState<VaultNode[]>(initialNodes);
   const [activeFileId, setActiveFileId] = useState<string | null>(null);
@@ -57,7 +75,10 @@ export const VaultProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   useEffect(() => {
     async function initVault() {
       try {
-        const res = await fetch(`${API_BASE}/notes`);
+        const authHeaders = await getAuthHeaderOnly();
+        const res = await fetch(`${API_BASE}/notes`, {
+          headers: authHeaders
+        });
         if (res.ok) {
           const serverNodes = await res.json();
           setNodes(serverNodes);
@@ -174,16 +195,20 @@ export const VaultProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     if (isUsingBackend) {
       try {
+        const headers = await getAuthHeaders();
         const res = await fetch(`${API_BASE}/notes`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers,
           body: JSON.stringify({ name: sanitizedName, type, parentId })
         });
         
         if (!res.ok) throw new Error('Create failed');
         
         // Reload nodes from server to sync true IDs
-        const getRes = await fetch(`${API_BASE}/notes`);
+        const authHeaders = await getAuthHeaderOnly();
+        const getRes = await fetch(`${API_BASE}/notes`, {
+          headers: authHeaders
+        });
         if (getRes.ok) {
           const freshNodes = await getRes.json();
           
@@ -236,9 +261,10 @@ export const VaultProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     if (isUsingBackend) {
       saveTimeoutsRef.current[id] = window.setTimeout(async () => {
         try {
+          const headers = await getAuthHeaders();
           const res = await fetch(`${API_BASE}/notes/${id}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers,
             body: JSON.stringify({ content })
           });
           if (!res.ok) {
@@ -267,14 +293,17 @@ export const VaultProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     if (isUsingBackend) {
       try {
+        const headers = await getAuthHeaders();
         const res = await fetch(`${API_BASE}/notes/${id}`, {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
+          headers,
           body: JSON.stringify({ name: updatedName })
         });
         if (res.ok) {
-          const freshRes = await fetch(`${API_BASE}/notes`);
-          if (freshRes.ok) {
+          const authHeaders = await getAuthHeaderOnly();
+          const freshRes = await fetch(`${API_BASE}/notes`, {
+            headers: authHeaders
+          });
             setNodes(await freshRes.json());
           }
         }
@@ -307,7 +336,11 @@ export const VaultProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     if (isUsingBackend) {
       try {
-        await fetch(`${API_BASE}/notes/${id}`, { method: 'DELETE' });
+        const authHeaders = await getAuthHeaderOnly();
+        await fetch(`${API_BASE}/notes/${id}`, {
+          method: 'DELETE',
+          headers: authHeaders
+        });
       } catch (err) {
         console.error('Error syncing delete to backend:', err);
       }

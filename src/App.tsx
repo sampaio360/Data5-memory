@@ -6,6 +6,8 @@ import { Backlinks } from './components/Backlinks';
 import { GraphView } from './components/GraphView';
 import { CommandPalette } from './components/CommandPalette';
 import { SettingsModal } from './components/SettingsModal';
+import { supabase } from './supabaseClient';
+import { Login } from './components/Login';
 import './App.css';
 
 const AppContent: React.FC = () => {
@@ -81,6 +83,39 @@ const AppContent: React.FC = () => {
 };
 
 function App() {
+  const [session, setSession] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setLoading(false);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="auth-overlay">
+        <div style={{ color: '#ffffff', fontSize: '14px', fontFamily: 'sans-serif', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span>Carregando sessão...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!session) {
+    return <Login onLoginSuccess={(sess) => setSession(sess)} />;
+  }
+
   return (
     <VaultProvider>
       <AppContent />
