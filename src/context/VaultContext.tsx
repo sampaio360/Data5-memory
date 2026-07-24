@@ -304,8 +304,7 @@ export const VaultProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           const freshRes = await fetch(`${API_BASE}/notes`, {
             headers: authHeaders
           });
-            setNodes(await freshRes.json());
-          }
+          setNodes(await freshRes.json());
         }
       } catch (err) {
         console.error('Error syncing rename to backend:', err);
