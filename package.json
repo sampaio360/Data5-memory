@@ -11,7 +11,8 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "desktop": "concurrently \"npm run dev\" \"wait-on http://127.0.0.1:5175 && electron .\""
+    "desktop": "concurrently \"npm run dev\" \"wait-on http://127.0.0.1:5175 && electron .\"",
+    "dist": "npm run build && electron-builder"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
@@ -34,9 +35,35 @@
     "@vitejs/plugin-react": "^6.0.2",
     "concurrently": "^10.0.3",
     "electron": "^43.2.0",
+    "electron-builder": "^26.15.3",
     "oxlint": "^1.69.0",
     "typescript": "~6.0.2",
     "vite": "^8.1.0",
     "wait-on": "^9.1.0"
+  },
+  "build": {
+    "appId": "com.data5.memory",
+    "productName": "Data5-Memory",
+    "directories": {
+      "output": "dist-desktop"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "public/favicon.svg"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Data5 Memory"
+    },
+    "files": [
+      "dist/**/*",
+      "main.cjs",
+      "package.json"
+    ]
   }
 }

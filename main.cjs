@@ -6,18 +6,28 @@ let expressProcess = null;
 let mainWindow = null;
 
 function startExpressServer() {
-  // Start the server/index.ts using tsx (TypeScript execute)
-  const tsxPath = path.join(__dirname, 'node_modules', 'tsx', 'dist', 'cli.mjs');
-  const serverPath = path.join(__dirname, 'server', 'index.ts');
-
-  console.log('Starting Express API Server...');
-  
-  expressProcess = fork(serverPath, [], {
-    execPath: process.execPath, // use electron node instance or path
-    execArgv: [tsxPath],        // pass tsx to execute typescript
+  const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
+  let serverPath;
+  let forkArgs = [];
+  let forkOptions = {
     env: { ...process.env, PORT: '3001' },
     silent: false
-  });
+  };
+
+  if (isDev) {
+    console.log('Starting Express API Server in Dev Mode (with tsx)...');
+    const tsxPath = path.join(__dirname, 'node_modules', 'tsx', 'dist', 'cli.mjs');
+    serverPath = path.join(__dirname, 'server', 'index.ts');
+    forkOptions.execPath = process.execPath;
+    forkOptions.execArgv = [tsxPath];
+  } else {
+    console.log('Starting Express API Server in Production Mode...');
+    // In production, the file is compiled to dist/server/index.js (or .js / .cjs depending on TS/Vite config)
+    // In ESM module resolution context, Node uses JS files compiled.
+    serverPath = path.join(__dirname, 'dist', 'server', 'index.js');
+  }
+
+  expressProcess = fork(serverPath, forkArgs, forkOptions);
 
   expressProcess.on('error', (err) => {
     console.error('Failed to start Express server:', err);
