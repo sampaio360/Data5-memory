@@ -47,7 +47,7 @@ function createWindow() {
   if (isDev) {
     // Wait slightly to ensure Vite dev server is running
     setTimeout(() => {
-      mainWindow.loadURL('http://localhost:5173');
+      mainWindow.loadURL('http://127.0.0.1:5175');
     }, 1000);
   } else {
     mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));

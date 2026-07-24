@@ -11,7 +11,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "desktop": "concurrently \"npm run dev\" \"wait-on http://localhost:5173 && electron .\""
+    "desktop": "concurrently \"npm run dev\" \"wait-on http://127.0.0.1:5175 && electron .\""
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
